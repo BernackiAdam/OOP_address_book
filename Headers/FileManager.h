@@ -8,12 +8,11 @@
 using namespace std;
 
 class FileManager{
-    fstream userFile;
-    fstream ContactFile;
 public:
     bool checkLogin(string login);
     int getFreeUserId();
     void saveUser(User user);
+    User getUserData(string login);
 };
 
 #endif

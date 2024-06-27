@@ -4,4 +4,8 @@ void AddressBook::rejestration(){
     userManager.rejestration();
 }
 
+void AddressBook::login(){
+    userManager.login();
+}
+
 

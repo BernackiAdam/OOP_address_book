@@ -10,7 +10,8 @@ class AddressBook{
     UserManager userManager;
 
 public:
-    void rejestration();    
+    void rejestration();
+    void login();    
 };
 
 #endif

@@ -7,13 +7,13 @@
 using namespace std;
 
 class UserManager{
-    User user;
     FileManager fileManager;
+    int logedUserId;
 public:
     void rejestration();
     void login();
     void logout();
-
+    User getUserData();
 };
 
 #endif
