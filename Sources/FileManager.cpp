@@ -26,16 +26,17 @@ int FileManager::getFreeUserId(){
     string line;
     string lastUserId = "0";
     while(getline(userFile, line) && line!=""){
-        lastUserId=line[2];
+        lastUserId=line[0];
     }
     userFile.close();
-    return stoi(lastUserId);
+    int freeId = stoi(lastUserId);
+    return freeId;
 }
 
 void FileManager::saveUser(User user){
     userFile.open("users.txt", ios::app);
     userFile << user.getId() << "|" ;
     userFile << user.getLogin() << "|" ;
-    userFile << user.getPassword() << "|" ;
+    userFile << user.getPassword() << "|" << endl;
     userFile.close();
 }
