@@ -9,6 +9,7 @@ class User{
     string login;
     string password;
 public:
+    User();
     int getId();
     string getLogin();
     string getPassword();

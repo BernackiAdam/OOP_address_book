@@ -69,6 +69,7 @@ User FileManager::getUserData(string login){
                         user.setId(userId);
                         user.setLogin(currLogin);
                         user.setPassword(password);
+                        userFile.close();
                         return user;
                     }
                     lineNr = 0;
@@ -78,5 +79,6 @@ User FileManager::getUserData(string login){
             lineNr++;
         }
     }
+    userFile.close();
     return user;
 }

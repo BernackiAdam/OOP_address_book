@@ -11,7 +11,7 @@ void AddressBook::login(){
 User AddressBook::getLogUser(){
     return userManager.getUserData();
 }
-int AddressBook::loginPage(){
+User AddressBook::loginPage(){
     cout << "Hello" << endl;
     cout << "1. Register" << endl;
     cout << "2. Login" << endl;
@@ -26,8 +26,7 @@ int AddressBook::loginPage(){
         case 3: exit(0);
         default: break;
     }
-    
-    return currUser.getId();
+    return this->currUser;
 }
 
 void AddressBook::userPage(User currUser){
@@ -42,8 +41,8 @@ void AddressBook::userPage(User currUser){
     cout << "7. Logout" << endl;
     cout << "9. Exit" << endl;
     cin >> choice;
-    // switch (choice)
-    // {
+    switch (choice)
+    {
     // case 1:
     //     searchFriend(contacts);
     //     break;
@@ -66,7 +65,7 @@ void AddressBook::userPage(User currUser){
     //     contacts.clear();
     //     currUserId = 0;
     //     break;
-    // case 9:
-    //     exit(0);
-    // };
+    case 9:
+        exit(0);
+    };
 }

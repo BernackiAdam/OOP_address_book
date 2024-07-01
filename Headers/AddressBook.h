@@ -13,7 +13,7 @@ class AddressBook{
     void login();   
 public:
     User getLogUser();
-    int loginPage();
+    User loginPage();
     void userPage(User currUser);
 };
 

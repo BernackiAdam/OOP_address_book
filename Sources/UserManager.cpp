@@ -7,6 +7,7 @@ User UserManager::getUserData(){
 void UserManager::rejestration(){
     string login, password;
     int lastFreeId;
+    User newUser;
     while(true){
         cout << "Type 0 for exit" << endl;
         cout << "Enter login: ";
@@ -22,17 +23,15 @@ void UserManager::rejestration(){
             cout << "Enter password: ";
             cin >> password;
             lastFreeId = fileManager.getFreeUserId();
-            user.setId(lastFreeId+1);
-            user.setLogin(login);
-            user.setPassword(password);
-            fileManager.saveUser(user);
+            newUser.setId(lastFreeId+1);
+            newUser.setLogin(login);
+            newUser.setPassword(password);
+            fileManager.saveUser(newUser);
             cout << endl;
             cout << "Account has been created." << endl;
             cout << endl;
             return;
-        }
-        
-        
+        }  
     }
 }
 
@@ -42,7 +41,8 @@ void UserManager::login(){
     while(1){
         cout << "Enter your login: ";
         cin >> login;
-        if(!fileManager.checkLogin(login)){
+        bool loginExist = fileManager.checkLogin(login);
+        if(!loginExist){
             cout << "Wrong login" << endl;
         }
         else{
@@ -53,7 +53,6 @@ void UserManager::login(){
                 cout << "Enter password: ";
                 cin >> password;
                 if(currUser.getPassword() == password){
-                    // this->logedUserId = user.getId();
                     this->user = currUser;
                     cout << "Welcome!" << endl;
                     return;
@@ -61,7 +60,7 @@ void UserManager::login(){
                 else{
                     cout << "Incorrect password" << endl;
                     if(incorrectPasswd == 2){
-                       cout << "You reached limit of trys" << endl;
+                        cout << "You reached limit of trys" << endl;
                         return;
                     }
                     cout << "You have " << 2-incorrectPasswd 
@@ -75,7 +74,3 @@ void UserManager::login(){
 
     }
 }
-
-// void UserManager::changePassword(){
-
-// }
