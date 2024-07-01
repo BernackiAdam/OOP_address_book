@@ -1,8 +1,11 @@
 #include "../Headers/UserManager.h"
 
+User UserManager::getUserData(){
+    return this->user;
+}
+
 void UserManager::rejestration(){
     string login, password;
-    User user;
     int lastFreeId;
     while(true){
         cout << "Type 0 for exit" << endl;
@@ -43,14 +46,15 @@ void UserManager::login(){
             cout << "Wrong login" << endl;
         }
         else{
-            User user = fileManager.getUserData(login);
+            User currUser = fileManager.getUserData(login);
             string password;
             int incorrectPasswd = 0;
             while(incorrectPasswd < 3){
                 cout << "Enter password: ";
                 cin >> password;
-                if(user.getPassword() == password){
-                    this->logedUserId = user.getId();
+                if(currUser.getPassword() == password){
+                    // this->logedUserId = user.getId();
+                    this->user = currUser;
                     cout << "Welcome!" << endl;
                     return;
                 }
@@ -70,6 +74,8 @@ void UserManager::login(){
         }
 
     }
-
-
 }
+
+// void UserManager::changePassword(){
+
+// }
