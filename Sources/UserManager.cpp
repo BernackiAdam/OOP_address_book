@@ -1,5 +1,9 @@
 #include "../Headers/UserManager.h"
 
+User UserManager::getUserData(){
+    return this->user;
+}
+
 void UserManager::rejestration(){
     string login, password;
     int lastFreeId;
@@ -31,3 +35,47 @@ void UserManager::rejestration(){
         
     }
 }
+
+void UserManager::login(){
+    string login;
+    cout << "Type 0 to exit" << endl;
+    while(1){
+        cout << "Enter your login: ";
+        cin >> login;
+        if(!fileManager.checkLogin(login)){
+            cout << "Wrong login" << endl;
+        }
+        else{
+            User currUser = fileManager.getUserData(login);
+            string password;
+            int incorrectPasswd = 0;
+            while(incorrectPasswd < 3){
+                cout << "Enter password: ";
+                cin >> password;
+                if(currUser.getPassword() == password){
+                    // this->logedUserId = user.getId();
+                    this->user = currUser;
+                    cout << "Welcome!" << endl;
+                    return;
+                }
+                else{
+                    cout << "Incorrect password" << endl;
+                    if(incorrectPasswd == 2){
+                       cout << "You reached limit of trys" << endl;
+                        return;
+                    }
+                    cout << "You have " << 2-incorrectPasswd 
+                        << " attepts left." << endl;
+                        cout << endl;
+                    incorrectPasswd++;
+                    continue;
+                }
+            }
+        }
+
+    }
+}
+
+// void UserManager::changePassword(){
+
+// }
