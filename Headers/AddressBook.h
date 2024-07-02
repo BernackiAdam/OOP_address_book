@@ -8,13 +8,11 @@ using namespace std;
 
 class AddressBook{
     UserManager userManager;
-    User currUser;
-    void rejestration();
-    void login();   
+    User currUser; 
 public:
     User getLogUser();
-    int loginPage();
-    void userPage(User currUser);
+    User loginPage();
+    void userPage(User& currUser);
 };
 
 #endif

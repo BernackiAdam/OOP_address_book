@@ -1,28 +1,61 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes notatik</help_text><element><id>UMLClass</id><coordinates><x>210</x><y>80</y><w>180</w><h>150</h></coordinates><panel_attributes>* Address book*
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram </help_text><element><id>UMLClass</id><coordinates><x>480</x><y>0</y><w>180</w><h>150</h></coordinates><panel_attributes>* Address book*
 --
-userId : Int
+-user: User
+- userManager: UserManager
+- contactManager: ContactManager
+- contacts: vector&lt;contacts&gt;
 --
++ loginPage(): User
++ UserPage(): void
 
 
-
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>250</y><w>240</w><h>170</h></coordinates><panel_attributes>UserManager
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>240</y><w>190</w><h>140</h></coordinates><panel_attributes>UserManager
 --
--id: Int
--login: String
--password: String
--contacts: vector &lt;Contact&gt;
--UserFreeId : int
+- user: User
+- fileManager: FileManager
 --
 + login() : int
 + register() : void
 + changePasswd() : void
-- logout() : int
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>460</y><w>190</w><h>120</h></coordinates><panel_attributes>FileManager
++ logout() : int
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>490</y><w>190</w><h>120</h></coordinates><panel_attributes>UserFileManager
 --
-UserFileName: string
-ContactFileName : string
+- updateUserFile(): void
+- checkLogin() : bool
+- getFreeId() : int
+- getUserData: User
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>690</x><y>240</y><w>210</w><h>180</h></coordinates><panel_attributes>ContactManager
 --
--updateContactFile() : void
--checkLogin() : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>460</y><w>160</w><h>90</h></coordinates><panel_attributes>ContactManager
+- fileManager: FileManager
+- contacts: &lt;vector&gt; Contact
+-
++ContactManager(User)
++ getContacts: &lt;vector&gt; Contact
++ showContacts: void
++ addContact
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>500</y><w>160</w><h>100</h></coordinates><panel_attributes>User
 --
--lastFreeId()</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+- id: int
+- login: string
+- password: string
+-
++ User()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>370</y><w>200</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>180;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>140</y><w>270</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;250;100</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>370</y><w>170</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;120</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>140</y><w>300</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>280;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>860</x><y>490</y><w>140</w><h>170</h></coordinates><panel_attributes>Contact
+--
+- id: int
+- userId: int
+- name: string
+- surname: string
+- : string
+- email: string
+- nrTel: string
+- address: string
+-
++ Contact()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>410</y><w>160</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;140;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>490</y><w>190</w><h>120</h></coordinates><panel_attributes>ContactFileManager
+--
+- updateContactFile() : void
+- getFreeId() : int
+- getContacts: &lt;vector&gt; Contact
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>410</y><w>170</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;10;10;80</additional_attributes></element></diagram>

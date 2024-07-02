@@ -1,5 +1,9 @@
 #include "../Headers/user.h"
-
+User::User(){
+    this->id = 0;
+    this->login = "";
+    this->password = "";
+}
 int User::getId(){
     return this->id;
 }

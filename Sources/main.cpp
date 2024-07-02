@@ -7,15 +7,13 @@ using namespace std;
 
 int main(){
     AddressBook addressBook;
-    User user;
-    int logUserId = 0;
+    User logedUser;
     while(1){
-        if(logUserId==0){
-            logUserId = addressBook.loginPage();
-            user = addressBook.getLogUser();
+        if(logedUser.getId()==0){
+            logedUser = addressBook.loginPage();
         }
         else{
-            addressBook.userPage(user);
+            addressBook.userPage(logedUser);
         }
     }
 }
