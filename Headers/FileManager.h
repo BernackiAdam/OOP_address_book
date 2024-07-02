@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <vector>
 #include "../Headers/user.h"
 using namespace std;
 
@@ -13,6 +14,7 @@ public:
     int getFreeUserId();
     void saveUser(User user);
     User getUserData(string login);
+    vector<User> getUsers();
 };
 
 #endif

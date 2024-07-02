@@ -1,8 +1,10 @@
 #include "../Headers/UserManager.h"
 
-User UserManager::getUserData(){
-    return this->user;
+UserManager::UserManager(){
+    this->users = fileManager.getUsers();
 }
+
+
 
 void UserManager::rejestration(){
     string login, password;
