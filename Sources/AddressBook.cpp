@@ -1,16 +1,9 @@
 #include "../Headers/AddressBook.h"
 
-void AddressBook::rejestration(){
-    userManager.rejestration();
-}
-
-void AddressBook::login(){
-    userManager.login();
-}
-
 User AddressBook::getLogUser(){
     return userManager.getUserData();
 }
+
 User AddressBook::loginPage(){
     cout << "Hello" << endl;
     cout << "1. Register" << endl;
@@ -19,8 +12,8 @@ User AddressBook::loginPage(){
     int choice;
     cin >> choice;
     switch(choice){
-        case 1: rejestration(); break;
-        case 2: login(); 
+        case 1: userManager.registration(); break;
+        case 2: userManager.login(); 
             currUser = getLogUser();
             break;
         case 3: exit(0);
@@ -29,8 +22,9 @@ User AddressBook::loginPage(){
     return this->currUser;
 }
 
-void AddressBook::userPage(User currUser){
+void AddressBook::userPage(User &currUser){
     int choice;
+    User user;
     cout << "Your address book." << endl;
     cout << "1. Search your friend" << endl;
     cout << "2. Show all friends" << endl;
@@ -58,13 +52,13 @@ void AddressBook::userPage(User currUser){
     // case 5:
     //     editFriend(contacts, currUserId);
     //     break;
-    // case 6:
-    //     changePasswd(currUser, currUserId);
-    //     break;
-    // case 7:
-    //     contacts.clear();
-    //     currUserId = 0;
-    //     break;
+    case 6:
+        userManager.changePassword(currUser);
+        break;
+    case 7:
+        // contacts.clear();
+        currUser = user;
+        break;
     case 9:
         exit(0);
     };
