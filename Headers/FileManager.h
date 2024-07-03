@@ -4,15 +4,21 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <vector>
 #include "../Headers/user.h"
 using namespace std;
 
 class FileManager{
+    const string USERFILENAME;
+    const string CONTACTFILENAME;
+
 public:
-    bool checkLogin(string login);
-    int getFreeUserId();
-    void saveUser(User user);
-    User getUserData(string login);
+    FileManager(string userFileName = "users.txt", string contactFileName = "contacts.txt")
+    :USERFILENAME(userFileName), CONTACTFILENAME(contactFileName){};
+
+    vector<User> getUsersFromFile();
+    void saveUserToFile(User user);
+    void updateUserFile(vector<User> users);
 };
 
 #endif
