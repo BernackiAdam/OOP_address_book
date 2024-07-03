@@ -8,15 +8,14 @@
 using namespace std;
 
 class ContactManager{
-    UserManager userManager;
     ContactFileManager contactFileManager;
     vector<Contact> contacts;
     int logedUserId;
+    string getAddress();
 public:
-    ContactManager();
+    ContactManager(int logedUserId);
     void addContact();
     void showContacts();
-
 };
 
 #endif

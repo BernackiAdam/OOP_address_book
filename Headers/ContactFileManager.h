@@ -12,11 +12,14 @@ class ContactFileManager{
     const string CONTACTFILENAME;
     const string TEMPFILENAME;
     const int CURRUSERID;
+    int lastUserId;
 public:
     ContactFileManager(int userId, string contactFileName = "contacts.txt", string tempFileName = "temp.txt")
-    :CURRUSERID(userId), CONTACTFILENAME(contactFileName), TEMPFILENAME(tempFileName){};
+    :CURRUSERID(userId), CONTACTFILENAME(contactFileName), TEMPFILENAME(tempFileName){this->lastUserId = 0;}
     vector<Contact> getContacts();
-    
+    int getLastUserId();
+    void updateContactFile(const vector<Contact>& contacts);
+    void addContactToFile(Contact contact);
 };
 
 #endif
