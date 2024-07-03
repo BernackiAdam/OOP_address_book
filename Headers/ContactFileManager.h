@@ -8,9 +8,14 @@
 #include "../Headers/contact.h"
 using namespace std;
 
-class UserFileManager{
+class ContactFileManager{
+    const string CONTACTFILENAME;
+    const string TEMPFILENAME;
+    const int CURRUSERID;
 public:
-    vector<Contact> getContacts(int currUserId);
+    ContactFileManager(int userId, string contactFileName = "contacts.txt", string tempFileName = "temp.txt")
+    :CURRUSERID(userId), CONTACTFILENAME(contactFileName), TEMPFILENAME(tempFileName){};
+    vector<Contact> getContacts();
     
 };
 
