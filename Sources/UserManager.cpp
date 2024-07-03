@@ -7,6 +7,11 @@ UserManager::UserManager(){
 User UserManager::getUserData(){
     return this->logedUser;
 }
+User UserManager::logout(){
+    User user;
+    this->logedUser = user;
+    return logedUser;
+}
 
 User UserManager::checkUser(string login, int id){
     User checkedUser;
@@ -59,7 +64,7 @@ void UserManager::registration(){
 void UserManager::login(){
     string login;
     cout << "Type 0 to exit" << endl;
-    while(1){
+    while(login!="0"){
         cout << "Enter your login: ";
         cin >> login;
         User checkedUser = checkUser(login);
@@ -67,31 +72,12 @@ void UserManager::login(){
             cout << "Wrong login" << endl;
         }
         else{
-            string password;
-            int incorrectPasswd = 0;
-            while(incorrectPasswd < 3){
-                cout << "Enter password: ";
-                cin >> password;
-                if(checkedUser.getPassword() == password){
-                    this->logedUser = checkedUser;
-                    cout << "Welcome!" << endl;
-                    return;
-                }
-                else{
-                    cout << "Incorrect password" << endl;
-                    if(incorrectPasswd == 2){
-                        cout << "You reached limit of trys" << endl;
-                        return;
-                    }
-                    cout << "You have " << 2-incorrectPasswd 
-                        << " attepts left." << endl;
-                        cout << endl;
-                    incorrectPasswd++;
-                    continue;
-                }
+            if(checkPassword(checkedUser.getPassword())){
+                cout << "Welcome!" << endl;
+                this->logedUser = checkedUser;
             }
+            return;
         }
-
     }
 }
 
@@ -106,40 +92,51 @@ int UserManager::getUserIndex(User &currUser){
     return 0;
 }
 
-void UserManager::changePassword(User &currUser){
+User UserManager::changePassword(User &currUser){
     string oldPassword, newPassword;
     string line;
     int trys = 0;
     int userIndex = getUserIndex(currUser);
-    while(true){
-        cout << "Enter old password or type 0 to exit: ";
-        cin >> oldPassword;
-        if(oldPassword == "0") return;
-        if(oldPassword != users[userIndex].getPassword()){
-            if(trys<2){
-                cout << "Password incorrect, try again" << endl;
-                cout << endl;
-                trys++;
-                continue;
-            }
-            else{
-                cout << "You reached limit" << endl;
-                cout << "You will be logged out" << endl;
-                cout << endl;
-                // currUser = ;
-                return;
-            }
-        }
-        cout << "Enter new password: ";
-        cin >> newPassword;
-        users[userIndex].setPassword(newPassword);
-        currUser.setPassword(newPassword);
-        fileManager.updateUserFile(users);
-        cout << "Password has been changed" << endl;
-        cout << endl;
-        break;
+    cout << "Please, enter your old password" << endl;
+    
+    if(!checkPassword(users[userIndex].getPassword())){
+        logout();
+        return this->logedUser;
     }
-    return;
+    cout << "Enter new password: ";
+    cin >> newPassword;
+    users[userIndex].setPassword(newPassword);
+    currUser.setPassword(newPassword);
+    fileManager.updateUserFile(users);
+    cout << "Password has been changed" << endl;
+    cout << endl;
+    return logedUser;
 }
 
-
+bool UserManager::checkPassword(string checkedPassword){
+    string password;
+    int incorrectPasswd = 0;
+    bool passwordCorrect = true;
+    bool passwordIncorrect = false;
+    // cout << "Type 0 to exit" << endl;
+    while(incorrectPasswd < 3){
+        cout << "Enter password: ";
+        cin >> password;
+        if(password=="0") return false;
+        if(checkedPassword == password){
+            return passwordCorrect;
+        }
+        else{
+            cout << "Incorrect password" << endl;
+            if(incorrectPasswd == 2){
+                cout << "You reached limit of trys" << endl;
+                return passwordIncorrect;
+            }
+            cout << "You have " << 2-incorrectPasswd 
+                << " attepts left." << endl;
+                cout << endl;
+            incorrectPasswd++;
+        }
+    }
+    return passwordIncorrect;
+}

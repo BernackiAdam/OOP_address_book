@@ -9,8 +9,8 @@ User AddressBook::getLogUser(){
 }
 
 void AddressBook::logout(){
-    User user;
-    this->currUser = user;
+    this->currUser = userManager.logout();
+    
 }
 
 User AddressBook::loginPage(){
@@ -64,7 +64,7 @@ void AddressBook::userPage(User &currUser){
         //     editFriend(contacts, currUserId);
         //     break;
         case 6:
-            userManager.changePassword(currUser);
+            currUser = userManager.changePassword(currUser);
             break;
         case 7:
             // contacts.clear();
