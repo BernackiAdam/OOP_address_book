@@ -4,6 +4,11 @@ User AddressBook::getLogUser(){
     return userManager.getUserData();
 }
 
+void AddressBook::logout(){
+    User user;
+    this->currUser = user;
+}
+
 User AddressBook::loginPage(){
     cout << "Hello" << endl;
     cout << "1. Register" << endl;
@@ -23,6 +28,7 @@ User AddressBook::loginPage(){
 }
 
 void AddressBook::userPage(User &currUser){
+    ContactManager contactManager(currUser.getId());
     int choice;
     User user;
     cout << "Your address book." << endl;
@@ -40,12 +46,12 @@ void AddressBook::userPage(User &currUser){
     // case 1:
     //     searchFriend(contacts);
     //     break;
-    // case 2:
-    //     showFriends(contacts);
-    //     break;
-    // case 3:
-    //     addAdresate(contacts, currUserId, lastFreeId);
-    //     break;
+    case 2:
+        contactManager.showContacts();
+        break;
+    case 3:
+        contactManager.addContact();
+        break;
     // case 4:
     //     deleteAFriend(contacts, currUserId);
     //     break;
@@ -57,7 +63,7 @@ void AddressBook::userPage(User &currUser){
         break;
     case 7:
         // contacts.clear();
-        currUser = user;
+        logout();
         break;
     case 9:
         exit(0);
