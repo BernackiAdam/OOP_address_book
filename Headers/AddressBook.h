@@ -12,6 +12,7 @@ class AddressBook{
     User currUser; 
     void logout();
 public:
+    AddressBook();
     User getLogUser();
     User loginPage();
     void userPage(User& currUser);

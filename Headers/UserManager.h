@@ -15,14 +15,14 @@ class UserManager{
     User checkUser(string login, int id=0);
     int getFreeId();
     int getUserIndex(User &currUser);
+    bool checkPassword(string password);
 public:
     UserManager();
     void registration();
     void login();
-    void logout();
+    User logout();
     User getUserData();
-    void changePassword(User& user);
-    int getCurrUserId();
+    User changePassword(User& user);
 
 };
 
