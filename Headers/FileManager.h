@@ -9,11 +9,11 @@
 using namespace std;
 
 class FileManager{
-    const string USERFILENAME;
+    const string USER_FILE_NAME;
 
 public:
     FileManager(string userFileName = "users.txt")
-    :USERFILENAME(userFileName){};
+    :USER_FILE_NAME(userFileName){};
 
     vector<User> getUsersFromFile();
     void saveUserToFile(User user);

@@ -6,8 +6,15 @@
 using namespace std;
 
 int main(){
+    AddressBook addressBook;
+    User currUser;
     while(1){
-        AddressBook addressBook;
+        if(currUser.getId()==0){
+            currUser = addressBook.loginPage();
+        }
+        else{
+            addressBook.userPage(currUser);
+        }
     }
 
 }

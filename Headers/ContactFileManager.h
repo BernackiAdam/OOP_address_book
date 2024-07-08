@@ -9,13 +9,13 @@
 using namespace std;
 
 class ContactFileManager{
-    const string CONTACTFILENAME;
-    const string TEMPFILENAME;
-    const int CURRUSERID;
+    const string CONTACT_FILE_NAME;
+    const string TEMP_FILE_NAME;
+    const int CURR_USER_ID;
     int lastUserId;
 public:
     ContactFileManager(int userId, string contactFileName = "contacts.txt", string tempFileName = "temp.txt")
-    :CURRUSERID(userId), CONTACTFILENAME(contactFileName), TEMPFILENAME(tempFileName){this->lastUserId = 0;}
+    :CURR_USER_ID(userId), CONTACT_FILE_NAME(contactFileName), TEMP_FILE_NAME(tempFileName){this->lastUserId = 0;}
     vector<Contact> getContacts();
     int getLastUserId();
     void updateContactFile(const vector<Contact>& contacts);

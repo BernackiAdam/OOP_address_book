@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram </help_text><element><id>UMLClass</id><coordinates><x>620</x><y>30</y><w>180</w><h>150</h></coordinates><panel_attributes>* Address book*
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram </help_text><element><id>UMLClass</id><coordinates><x>560</x><y>60</y><w>180</w><h>150</h></coordinates><panel_attributes>* Address book*
 --
 - userManager: UserManager
 - contactManager: ContactManager
@@ -10,7 +10,7 @@
 + getLogUser(): User
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>270</y><w>250</w><h>250</h></coordinates><panel_attributes>UserManager
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>230</x><y>300</y><w>250</w><h>250</h></coordinates><panel_attributes>UserManager
 --
 - users: vector&lt;Users&gt;
 - fileManager: FileManager
@@ -27,14 +27,14 @@
 + changePasswd() : void
 + logout() : int
 + changePassword(); User
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>580</y><w>190</w><h>120</h></coordinates><panel_attributes>FileManager
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>610</y><w>190</w><h>120</h></coordinates><panel_attributes>FileManager
 --
 - USERFILENAME: string
 --
 - updateUserFile(): void
 - getUsersFromFile(): vector&lt;Users&gt;
 - saveUserToFile(): void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>830</x><y>270</y><w>210</w><h>180</h></coordinates><panel_attributes>ContactManager
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>300</y><w>210</w><h>180</h></coordinates><panel_attributes>ContactManager
 --
 - contactFileManager: ContactFileManager
 - contacts: &lt;vector&gt; Contact
@@ -45,14 +45,14 @@
 + showContacts(): void
 + addContact(): void
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>600</y><w>160</w><h>100</h></coordinates><panel_attributes>User
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>630</y><w>160</w><h>100</h></coordinates><panel_attributes>User
 --
 - id: int
 - login: string
 - password: string
 -
 + User()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>510</y><w>200</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>180;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>170</y><w>270</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;250;100</additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>510</y><w>170</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;70</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>170</y><w>300</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>280;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1000</x><y>530</y><w>140</w><h>170</h></coordinates><panel_attributes>Contact
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>540</y><w>200</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>180;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>200</y><w>270</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;250;100</additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>540</y><w>170</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;70</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>200</y><w>300</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>280;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>560</y><w>140</w><h>170</h></coordinates><panel_attributes>Contact
 --
 - id: int
 - userId: int
@@ -64,7 +64,7 @@
 - address: string
 -
 + Contact()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>930</x><y>440</y><w>160</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;140;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>520</y><w>220</w><h>180</h></coordinates><panel_attributes>ContactFileManager
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>870</x><y>470</y><w>160</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;140;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>550</y><w>220</w><h>180</h></coordinates><panel_attributes>ContactFileManager
 --
 - CONTACTFILENAME: string
 - TEMPFILENAME: string
@@ -76,4 +76,4 @@
 - getLastUserId() : int
 - getContacts: &lt;vector&gt; Contact
 - addContactToFile(): void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>440</y><w>170</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;10;10;80</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>470</y><w>170</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;10;10;80</additional_attributes></element></diagram>

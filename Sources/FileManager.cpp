@@ -5,7 +5,7 @@ vector<User> FileManager::getUsersFromFile(){
     vector<User> users;
     string line, item;
     int lineNr = 1;
-    userFile.open(USERFILENAME, ios::in);
+    userFile.open(USER_FILE_NAME, ios::in);
     if(!userFile.good()){
         cout << "Error, cannot access user file" << endl;
         return users;
@@ -31,7 +31,7 @@ vector<User> FileManager::getUsersFromFile(){
 
 void FileManager::saveUserToFile(User user){
     fstream userFile;
-    userFile.open(USERFILENAME, ios::app);
+    userFile.open(USER_FILE_NAME, ios::app);
     if(!userFile.good()){
         cout << "Error during saving user file" << endl;
         return;
@@ -45,7 +45,7 @@ void FileManager::saveUserToFile(User user){
 
 void FileManager::updateUserFile(vector<User> users){
     fstream userFile;
-    userFile.open(USERFILENAME, ios::out);
+    userFile.open(USER_FILE_NAME, ios::out);
     if(!userFile.good()){
         cout << "Cannot access user file" << endl;
         return;

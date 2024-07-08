@@ -7,7 +7,7 @@ int ContactFileManager::getLastUserId(){
 vector<Contact> ContactFileManager::getContacts(){
     fstream contactFile;
     vector<Contact> contacts;
-    contactFile.open(CONTACTFILENAME, ios::in);
+    contactFile.open(CONTACT_FILE_NAME, ios::in);
     if(!contactFile.good()){
         cout << "Cannot access contact file" << endl;
         return contacts;
@@ -27,7 +27,7 @@ vector<Contact> ContactFileManager::getContacts(){
                 case 5: contact.setEmail(item); break;
                 case 6: contact.setNrTel(item); break;
                 case 7: contact.setAddress(item); lineNr=0;
-                        if(CURRUSERID == contact.getUserId()){
+                        if(CURR_USER_ID == contact.getUserId()){
                             contacts.push_back(contact);
                         }
                         break;
@@ -41,7 +41,7 @@ vector<Contact> ContactFileManager::getContacts(){
 
 void ContactFileManager::addContactToFile(Contact contact){
     fstream contactFile;
-    contactFile.open(CONTACTFILENAME, ios::app);
+    contactFile.open(CONTACT_FILE_NAME, ios::app);
     if(!contactFile.good()){
         cout << "Cannot access contact file" << endl;
         return ;

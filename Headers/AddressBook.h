@@ -9,13 +9,19 @@ using namespace std;
 
 class AddressBook{
     UserManager userManager;
+    ContactManager *contactManager;
     User currUser; 
-    void logout();
+    User logout();
 public:
     AddressBook();
+    ~AddressBook(){
+        delete contactManager;
+        contactManager=NULL;
+    }
     User getLogUser();
     User loginPage();
     void userPage(User& currUser);
+
 };
 
 #endif

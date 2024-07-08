@@ -12,7 +12,7 @@ class Contact{
     string nrTel;
     string address;
 public:
-    Contact();
+    Contact(int userId = 0, int contactId = 0, string name = "", string surname = "", string email = "", string nrTel = "", string address = "");
 
     int getContactId();
     int getUserId();

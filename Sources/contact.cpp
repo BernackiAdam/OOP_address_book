@@ -1,13 +1,13 @@
 #include "../Headers/contact.h"
 
-Contact::Contact(){
-    this->userId = 0;
-    this->contactId = 0;
-    this->name = "";
-    this->surname = "";
-    this->email = "";
-    this->nrTel = "";
-    this->address = "";
+Contact::Contact(int userId, int contactId, string name, string surname, string email, string nrTel , string address){
+    this->userId = userId;
+    this->contactId = contactId;
+    this->name = name;
+    this->surname = surname;
+    this->email = email;
+    this->nrTel = nrTel;
+    this->address = address;
 }
 
 int Contact::getContactId(){return this->contactId;}

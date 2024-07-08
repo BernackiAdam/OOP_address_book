@@ -1,16 +1,19 @@
 #include "../Headers/AddressBook.h"
 
 AddressBook::AddressBook(){
-    currUser = loginPage();
+    contactManager = NULL;
 }
 
 User AddressBook::getLogUser(){
     return userManager.getUserData();
 }
 
-void AddressBook::logout(){
+User AddressBook::logout(){
     this->currUser = userManager.logout();
-    
+    delete contactManager;
+    contactManager = NULL;
+    User user;
+    return user;
 }
 
 User AddressBook::loginPage(){
@@ -24,7 +27,6 @@ User AddressBook::loginPage(){
         case 1: userManager.registration(); break;
         case 2: userManager.login(); 
             currUser = getLogUser();
-            userPage(currUser);
             break;
         case 3: exit(0);
         default: break;
@@ -33,7 +35,7 @@ User AddressBook::loginPage(){
 }
 
 void AddressBook::userPage(User &currUser){
-    ContactManager contactManager(currUser.getId());
+    contactManager = new ContactManager(currUser.getId());
     while(currUser.getId()!=0){
         int choice;
         cout << "Your address book." << endl;
@@ -52,10 +54,10 @@ void AddressBook::userPage(User &currUser){
         //     searchFriend(contacts);
         //     break;
         case 2:
-            contactManager.showContacts();
+            contactManager->showContacts();
             break;
         case 3:
-            contactManager.addContact();
+            contactManager->addContact();
             break;
         // case 4:
         //     deleteAFriend(contacts, currUserId);
@@ -67,8 +69,7 @@ void AddressBook::userPage(User &currUser){
             currUser = userManager.changePassword(currUser);
             break;
         case 7:
-            // contacts.clear();
-            logout();
+            currUser = logout();
             break;
         case 9:
             exit(0);
