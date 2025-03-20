@@ -8,12 +8,10 @@
 using namespace std;
 
 class ContactManager{
-    ContactFileManager contactFileManager;
-
-    
-    vector<Contact> contacts;
     int logedUserId;
-    string getAddress();
+    vector<Contact> contacts;
+    ContactFileManager contactFileManager;
+    string enterAddress();
 public:
     ContactManager(int logedUserId);
     void addContact();

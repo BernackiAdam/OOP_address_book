@@ -3,14 +3,13 @@
 
 #include <iostream>
 #include <vector>
-#include "../Headers/user.h"
-#include "../Headers/FileManager.h"
+#include "user.h"
+#include "FileManager.h"
 using namespace std;
 
 class UserManager{
     FileManager fileManager;
     vector<User> users;
-    User logedUser;
 
     User checkUser(string login, int id=0);
     int getFreeId();
@@ -19,10 +18,8 @@ class UserManager{
 public:
     UserManager();
     void registration();
-    void login();
-    User logout();
-    User getUserData();
-    User changePassword(User& user);
+    User login();
+    bool changePassword(User& user);
 
 };
 

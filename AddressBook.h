@@ -1,8 +1,9 @@
 #ifndef ADDRESSBOOK_H
 #define ADDRESSBOOK_H
 
-#include "../Headers/UserManager.h"
-#include "../Headers/ContactManager.h"
+#include "UserManager.h"
+#include "ContactManager.h"
+#include "user.h"
 #include <iostream>
 
 using namespace std;
@@ -11,16 +12,20 @@ class AddressBook{
     UserManager userManager;
     ContactManager *contactManager;
     User currUser; 
-    User logout();
+    void logout();
 public:
     AddressBook();
     ~AddressBook(){
         delete contactManager;
         contactManager=NULL;
     }
-    User getLogUser();
-    User loginPage();
-    void userPage(User& currUser);
+    bool isUserLoggedIn();
+    void registration();
+    void login();
+    void showContacts();
+    void addContact();
+    void changePassword();
+    void setCurrentUser(User user);
 
 };
 

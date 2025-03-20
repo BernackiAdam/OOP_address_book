@@ -1,4 +1,4 @@
-#include "../Headers/FileManager.h"
+#include "FileManager.h"
 
 vector<User> FileManager::getUsersFromFile(){
     fstream userFile;

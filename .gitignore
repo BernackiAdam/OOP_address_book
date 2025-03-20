@@ -1,5 +1,6 @@
 *.txt
 /.vscode
 *.exe
+/.bin
 main.exe
 Sources/Addressbook.code-workspace

@@ -1,4 +1,4 @@
-#include "../Headers/ContactFileManager.h"
+#include "ContactFileManager.h"
 
 int ContactFileManager::getLastUserId(){
     return this->lastUserId;

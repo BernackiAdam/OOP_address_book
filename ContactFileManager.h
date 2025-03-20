@@ -5,7 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include "../Headers/contact.h"
+#include "contact.h"
 using namespace std;
 
 class ContactFileManager{

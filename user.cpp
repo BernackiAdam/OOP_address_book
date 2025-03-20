@@ -1,4 +1,4 @@
-#include "../Headers/user.h"
+#include "user.h"
 User::User(){
     this->id = 0;
     this->login = "";

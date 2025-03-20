@@ -1,17 +1,9 @@
-#include "../Headers/UserManager.h"
+#include "UserManager.h"
 
 UserManager::UserManager(){
     this->users = fileManager.getUsersFromFile();
 }
 
-User UserManager::getUserData(){
-    return this->logedUser;
-}
-User UserManager::logout(){
-    User user;
-    this->logedUser = user;
-    return logedUser;
-}
 
 User UserManager::checkUser(string login, int id){
     User checkedUser;
@@ -61,9 +53,10 @@ void UserManager::registration(){
     }
 }
 
-void UserManager::login(){
+User UserManager::login(){
     string login;
     cout << "Type 0 to exit" << endl;
+    User user;
     while(login!="0"){
         cout << "Enter your login: ";
         cin >> login;
@@ -74,11 +67,11 @@ void UserManager::login(){
         else{
             if(checkPassword(checkedUser.getPassword())){
                 cout << "Welcome!" << endl;
-                this->logedUser = checkedUser;
             }
-            return;
+            return user=checkedUser;
         }
     }
+    return user;
 }
 
 int UserManager::getUserIndex(User &currUser){
@@ -92,7 +85,7 @@ int UserManager::getUserIndex(User &currUser){
     return 0;
 }
 
-User UserManager::changePassword(User &currUser){
+bool UserManager::changePassword(User &currUser){
     string oldPassword, newPassword;
     string line;
     int trys = 0;
@@ -100,8 +93,7 @@ User UserManager::changePassword(User &currUser){
     cout << "Please, enter your old password" << endl;
     
     if(!checkPassword(users[userIndex].getPassword())){
-        logout();
-        return this->logedUser;
+        return false;
     }
     cout << "Enter new password: ";
     cin >> newPassword;
@@ -110,7 +102,7 @@ User UserManager::changePassword(User &currUser){
     fileManager.updateUserFile(users);
     cout << "Password has been changed" << endl;
     cout << endl;
-    return logedUser;
+    return true;
 }
 
 bool UserManager::checkPassword(string checkedPassword){

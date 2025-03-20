@@ -1,4 +1,4 @@
-#include "../Headers/contact.h"
+#include "contact.h"
 
 Contact::Contact(int userId, int contactId, string name, string surname, string email, string nrTel , string address){
     this->userId = userId;

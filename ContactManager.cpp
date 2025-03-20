@@ -1,4 +1,4 @@
-#include "../Headers/ContactManager.h"
+#include "ContactManager.h"
 
 ContactManager::ContactManager(int logedUserId)
     :contactFileManager(logedUserId){
@@ -6,7 +6,7 @@ ContactManager::ContactManager(int logedUserId)
     this->contacts = contactFileManager.getContacts();
 }
 
-string ContactManager::getAddress(){
+string ContactManager::enterAddress(){
     string address;
     cin.sync();
     getline(cin, address);
@@ -31,7 +31,7 @@ void ContactManager::addContact(){
         newContact.setNrTel(item);
     cout << "Enter new friend's address: ";
     cin.ignore();
-    item = getAddress();
+    item = enterAddress();
         newContact.setAddress(item);
 
     newContact.setUserId(this->logedUserId);
