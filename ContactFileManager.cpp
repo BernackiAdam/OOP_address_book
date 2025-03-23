@@ -5,13 +5,17 @@ int ContactFileManager::getLastUserId(){
 }
 
 vector<Contact> ContactFileManager::getContacts(){
-    fstream contactFile;
     vector<Contact> contacts;
+    if(isFileEmpty(CONTACT_FILE_NAME)){
+        return contacts;
+    }
+    fstream contactFile;
     contactFile.open(CONTACT_FILE_NAME, ios::in);
     if(!contactFile.good()){
         cout << "Cannot access contact file" << endl;
         return contacts;
     }
+
     string line, item;
     int lineNr = 1;
     while(getline(contactFile, line) && line!=""){

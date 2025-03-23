@@ -6,9 +6,10 @@
 #include <sstream>
 #include <vector>
 #include "user.h"
+#include "BaseFileManager.h"
 using namespace std;
 
-class UserFileManager{
+class UserFileManager : public BaseFileManager{
     const string USER_FILE_NAME;
 
 public:
