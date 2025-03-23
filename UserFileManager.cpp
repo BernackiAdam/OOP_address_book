@@ -1,6 +1,6 @@
-#include "FileManager.h"
+#include "UserFileManager.h"
 
-vector<User> FileManager::getUsersFromFile(){
+vector<User> UserFileManager::getUsersFromFile(){
     fstream userFile;
     vector<User> users;
     string line, item;
@@ -29,7 +29,7 @@ vector<User> FileManager::getUsersFromFile(){
     return users;
 }
 
-void FileManager::saveUserToFile(User user){
+void UserFileManager::saveUserToFile(User user){
     fstream userFile;
     userFile.open(USER_FILE_NAME, ios::app);
     if(!userFile.good()){
@@ -43,7 +43,7 @@ void FileManager::saveUserToFile(User user){
     userFile.close();
 }
 
-void FileManager::updateUserFile(vector<User> users){
+void UserFileManager::updateUserFile(vector<User> users){
     fstream userFile;
     userFile.open(USER_FILE_NAME, ios::out);
     if(!userFile.good()){

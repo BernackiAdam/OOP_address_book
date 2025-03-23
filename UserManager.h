@@ -4,11 +4,11 @@
 #include <iostream>
 #include <vector>
 #include "user.h"
-#include "FileManager.h"
+#include "UserFileManager.h"
 using namespace std;
 
 class UserManager{
-    FileManager fileManager;
+    UserFileManager fileManager;
     vector<User> users;
 
     User checkUser(string login, int id=0);
