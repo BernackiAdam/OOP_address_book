@@ -6,9 +6,10 @@
 #include <sstream>
 #include <vector>
 #include "contact.h"
+#include "BaseFileManager.h"
 using namespace std;
 
-class ContactFileManager{
+class ContactFileManager : public BaseFileManager{
     const string CONTACT_FILE_NAME;
     const string TEMP_FILE_NAME;
     const int CURR_USER_ID;

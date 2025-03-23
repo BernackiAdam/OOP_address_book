@@ -46,6 +46,13 @@ void ContactManager::addContact(){
 }
 
 void ContactManager::showContacts(){
+    if(contacts.size()==0){
+        cout << endl;
+        cout << "You dont have any contacts yet." << endl;
+        cout << endl;
+        return;
+    }
+    cout << endl;
     for(auto contact : contacts){
         cout << "Friend id. " << contact.getContactId() << ": ";
         cout << contact.getName() << " ";
