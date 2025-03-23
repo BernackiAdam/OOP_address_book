@@ -39,6 +39,19 @@ vector<Contact> ContactFileManager::getContacts(){
     return contacts;
 }
 
+string ContactFileManager::convertToFileLine(Contact contact){
+    string line;
+    line +=to_string(contact.getContactId()) + "|";
+    line +=to_string(contact.getUserId()) + "|";
+    line +=contact.getName() + "|";
+    line +=contact.getSurname() + "|";
+    line +=contact.getEmail() + "|";
+    line +=contact.getNrTel() + "|";
+    line +=contact.getAddress();
+    return line;
+
+}
+
 void ContactFileManager::addContactToFile(Contact contact){
     fstream contactFile;
     contactFile.open(CONTACT_FILE_NAME, ios::app);
@@ -46,17 +59,53 @@ void ContactFileManager::addContactToFile(Contact contact){
         cout << "Cannot access contact file" << endl;
         return ;
     }
-    contactFile << contact.getContactId() << "|";
-    contactFile << contact.getUserId() << "|";
-    contactFile << contact.getName() << "|";
-    contactFile << contact.getSurname() << "|";
-    contactFile << contact.getEmail() << "|";
-    contactFile << contact.getNrTel() << "|";
-    contactFile << contact.getAddress() << endl;
-
+    contactFile << convertToFileLine(contact) << endl;
     contactFile.close();
 }
 
-void ContactFileManager::updateContactFile(const vector<Contact>& contacts){
+void ContactFileManager::updateContactFile(Contact contact, bool edit) {
+    fstream contactFile, tempFile;
+    contactFile.open(CONTACT_FILE_NAME, ios::in);
+    tempFile.open(TEMP_FILE_NAME, ios::out);
 
+    if (!contactFile.good() || !tempFile.good()) {
+        cout << "Cannot access contact file" << endl;
+        return;
+    }
+
+    string line, item;
+    int lineNr = 1;
+    
+    while (getline(contactFile, line) && line != "") {
+        stringstream ss(line);
+        Contact tempContact;
+
+        while (getline(ss, item, '|')) {
+            switch (lineNr) {
+                case 1: tempContact.setContactId(stoi(item)); break;
+                case 2: tempContact.setUserId(stoi(item)); break;
+                case 3: tempContact.setName(item); break;
+                case 4: tempContact.setSurname(item); break;
+                case 5: tempContact.setEmail(item); break;
+                case 6: tempContact.setNrTel(item); break;
+                case 7: tempContact.setAddress(item); lineNr = 0; break;
+            }
+            lineNr++;
+        }
+
+        if (tempContact.getContactId() == contact.getContactId()) {
+            if (edit) {
+                tempFile << convertToFileLine(contact) << endl; 
+            }
+
+        } else {
+            tempFile << line << endl; 
+        }
+    }
+
+    contactFile.close();
+    tempFile.close();
+
+    remove(CONTACT_FILE_NAME.c_str());
+    rename(TEMP_FILE_NAME.c_str(), CONTACT_FILE_NAME.c_str());
 }

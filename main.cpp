@@ -42,18 +42,16 @@ int main(){
             case 3:
                 addressBook.addContact();
                 break;
-            // case 4:
-            //     deleteAFriend(contacts, currUserId);
-            //     break;
-            // case 5:
-            //     editFriend(contacts, currUserId);
-            //     break;
+            case 4:
+                addressBook.deleteContact();
+                break;
+            case 5:
+                addressBook.editContact();
+                break;
             case 6:
                 addressBook.changePassword();
                 break;
             case 7:
-                // User user;
-                // this->currUser = user;
                 addressBook.setCurrentUser(User());
                 break;
             case 9:

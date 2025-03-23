@@ -47,3 +47,11 @@ void AddressBook::changePassword(){
 void AddressBook::setCurrentUser(User user){
     this->currUser=user;
 }
+
+void AddressBook::editContact(){
+    contactManager->editContact();
+}
+
+void AddressBook::deleteContact(){
+    contactManager->deleteContact();
+}

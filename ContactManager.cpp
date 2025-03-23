@@ -6,33 +6,37 @@ ContactManager::ContactManager(int logedUserId)
     this->contacts = contactFileManager.getContacts();
 }
 
-string ContactManager::enterAddress(){
-    string address;
+string ContactManager::getlineValue(){
+    string value;
     cin.sync();
-    getline(cin, address);
-    return address;
+    getline(cin, value);
+    return value;
+}
+
+Contact ContactManager::getContactData(Contact contact = Contact()){
+    string item;
+    cout << endl;
+    cout << "Enter friend's name: ";
+    cin >> item;
+        contact.setName(item);
+    cout << "Enter friend's surname: ";
+    cin >> item;
+        contact.setSurname(item);
+    cout << "Enter friend's email address: ";
+    cin >> item;
+        contact.setEmail(item);
+    cout << "Enter friend's telephone number: ";
+    cin >> item;
+        contact.setNrTel(item);
+    cout << "Enter friend's address: ";
+    cin.ignore();
+    item = getlineValue();
+        contact.setAddress(item);
+    return contact;
 }
 
 void ContactManager::addContact(){
-    Contact newContact;
-    string item;
-    cout << endl;
-    cout << "Enter new friend's name: ";
-    cin >> item;
-        newContact.setName(item);
-    cout << "Enter new friend's surname: ";
-    cin >> item;
-        newContact.setSurname(item);
-    cout << "Enter new friend's email address: ";
-    cin >> item;
-        newContact.setEmail(item);
-    cout << "Enter new friend's telephone number: ";
-    cin >> item;
-        newContact.setNrTel(item);
-    cout << "Enter new friend's address: ";
-    cin.ignore();
-    item = enterAddress();
-        newContact.setAddress(item);
+    Contact newContact = getContactData();
 
     newContact.setUserId(this->logedUserId);
     newContact.setContactId(contactFileManager.getLastUserId()+1);
@@ -51,4 +55,106 @@ void ContactManager::showContacts(){
         cout << contact.getAddress() << endl;
         cout << endl;
     }
+}
+
+Contact ContactManager::editContactData(Contact contact) {
+    int choice;
+
+    while (true) {
+        cout << "What would you like to change (enter a number)" << endl;
+        cout << "1. Change Name: " << contact.getName() << endl;
+        cout << "2. Change Surname: " << contact.getSurname() << endl;
+        cout << "3. Change Email: " << contact.getEmail() << endl;
+        cout << "4. Change Phone Number: " << contact.getNrTel() << endl;
+        cout << "5. Change Address: " << contact.getAddress() << endl;
+        cout << "6. Save and Exit" << endl;
+        cout << "Select an option: ";
+        cin >> choice;
+        cin.ignore(); 
+
+        switch (choice) {
+            case 1:
+                cout << "Enter new name: ";
+                contact.setName(getlineValue());
+                break;
+            case 2:
+                cout << "Enter new surname: ";
+                contact.setSurname(getlineValue());
+                break;
+            case 3:
+                cout << "Enter new email: ";
+                contact.setEmail(getlineValue());
+                break;
+            case 4:
+                cout << "Enter new phone number: ";
+                contact.setNrTel(getlineValue());
+                break;
+            case 5:
+                cout << "Enter new address: ";
+                contact.setAddress(getlineValue());
+                break;
+            case 6:
+                cout << "Changes saved successfully." << endl;
+                return contact;
+            default:
+                cout << "Invalid option, please try again." << endl;
+        }
+    }
+}
+
+int ContactManager::getIdOfTheContact(){
+    showContacts();
+    int editedContactId;
+    cout << "Enter id of the contact: ";
+    cin >> editedContactId;
+    cout << endl;
+    return editedContactId;
+}
+
+string ContactManager::toLower(string item){
+    transform(item.begin(), item.end(), item.begin(), ::tolower);
+    return item; 
+}
+
+void ContactManager::editContact(){
+    int contactId = getIdOfTheContact();
+    for(auto &contact : contacts){
+        if(contact.getContactId() == contactId){
+            contact = editContactData(contact);
+            contactFileManager.updateContactFile(contact);
+            return;
+        }
+    }
+    cout << "There is no contact with this Id" << endl;
+    return;
+}
+
+void ContactManager::deleteContact(){
+    int contactId = getIdOfTheContact();
+    for(auto &contact : contacts){
+        if(contact.getContactId() == contactId){
+            cout << "Are you sure that you want to delete " << contact.getName() << " " << contact.getSurname() << endl;
+            cout << "Type yes or no: ";
+            string consent = "";
+            while(1){
+                cin >> consent;
+                consent = toLower(consent);
+                if(toLower(consent) == "no"){
+                    cout << "Contact will not be deleted" << endl;
+                    return;
+                } else if (toLower(consent) == "yes")
+                {
+                    contactFileManager.updateContactFile(contact, false);
+                    this-> contacts = contactFileManager.getContacts();
+                    cout << "Contact was deleted" << endl;
+                    return;
+                }else{
+                    cout << "Wrong answer, try again: ";
+                    continue;
+                }
+            } 
+        } 
+    }
+    cout << "Contact with that id could not be found" << endl;
+    return;
 }

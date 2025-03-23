@@ -5,17 +5,24 @@
 #include "ContactFileManager.h"
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class ContactManager{
     int logedUserId;
     vector<Contact> contacts;
     ContactFileManager contactFileManager;
-    string enterAddress();
+    string getlineValue();
+    Contact getContactData(Contact);
+    Contact editContactData(Contact);
+    int getIdOfTheContact();
+    string toLower(string);
 public:
     ContactManager(int logedUserId);
     void addContact();
     void showContacts();
+    void editContact();
+    void deleteContact();
 };
 
 #endif

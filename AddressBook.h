@@ -26,7 +26,8 @@ public:
     void addContact();
     void changePassword();
     void setCurrentUser(User user);
-
+    void editContact();
+    void deleteContact();
 };
 
 #endif
