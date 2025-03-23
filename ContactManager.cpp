@@ -13,6 +13,16 @@ string ContactManager::getlineValue(){
     return value;
 }
 
+void ContactManager::displayContact(Contact contact){
+    cout << "Friend id. " << contact.getContactId() << ": ";
+    cout << contact.getName() << " ";
+    cout << contact.getSurname() << ", ";
+    cout << contact.getEmail() << ", " << endl;
+    cout << contact.getNrTel() << ", ";
+    cout << contact.getAddress() << endl;
+    cout << endl;
+}
+
 Contact ContactManager::getContactData(Contact contact = Contact()){
     string item;
     cout << endl;
@@ -54,13 +64,14 @@ void ContactManager::showContacts(){
     }
     cout << endl;
     for(auto contact : contacts){
-        cout << "Friend id. " << contact.getContactId() << ": ";
-        cout << contact.getName() << " ";
-        cout << contact.getSurname() << ", ";
-        cout << contact.getEmail() << ", " << endl;
-        cout << contact.getNrTel() << ", ";
-        cout << contact.getAddress() << endl;
-        cout << endl;
+        // cout << "Friend id. " << contact.getContactId() << ": ";
+        // cout << contact.getName() << " ";
+        // cout << contact.getSurname() << ", ";
+        // cout << contact.getEmail() << ", " << endl;
+        // cout << contact.getNrTel() << ", ";
+        // cout << contact.getAddress() << endl;
+        // cout << endl;
+        displayContact(contact);
     }
 }
 
@@ -183,7 +194,7 @@ void ContactManager::searchContact() {
 
     int choice;
     cin >> choice;
-    cin.ignore(); // Zapobiega problemom z getline po cin
+    cin.ignore(); 
 
     string searchValue;
     cout << "Enter search value: ";
@@ -223,9 +234,7 @@ void ContactManager::searchContact() {
     } else {
         cout << "Found contacts:" << endl;
         for (auto& contact : foundContacts) {
-            cout << "ID: " << contact.getContactId() << ", Name: " << contact.getName() << " " << contact.getSurname() 
-                 << ", Email: " << contact.getEmail() << ", Phone: " << contact.getNrTel() 
-                 << ", Address: " << contact.getAddress() << endl;
+            displayContact(contact);
         }
     }
 }

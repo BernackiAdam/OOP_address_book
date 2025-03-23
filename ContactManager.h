@@ -17,6 +17,7 @@ class ContactManager{
     Contact editContactData(Contact);
     int getIdOfTheContact();
     string toLower(string);
+    void displayContact(Contact);
 public:
     ContactManager(int logedUserId);
     void addContact();
