@@ -165,3 +165,67 @@ void ContactManager::deleteContact(){
     cout << "Contact with that id could not be found" << endl;
     return;
 }
+
+
+void ContactManager::searchContact() {
+    if (contacts.empty()) {
+        cout << "No contacts available to search." << endl;
+        return;
+    }
+
+    cout << "Search by:" << endl;
+    cout << "1. Name" << endl;
+    cout << "2. Surname" << endl;
+    cout << "3. Email" << endl;
+    cout << "4. Phone Number" << endl;
+    cout << "5. Address" << endl;
+    cout << "Enter your choice: ";
+
+    int choice;
+    cin >> choice;
+    cin.ignore(); // Zapobiega problemom z getline po cin
+
+    string searchValue;
+    cout << "Enter search value: ";
+    searchValue = getlineValue();
+
+    vector<Contact> foundContacts;
+    for (auto& contact : contacts) {
+        switch (choice) {
+            case 1:
+                if (contact.getName() == searchValue)
+                    foundContacts.push_back(contact);
+                break;
+            case 2:
+                if (contact.getSurname() == searchValue)
+                    foundContacts.push_back(contact);
+                break;
+            case 3:
+                if (contact.getEmail() == searchValue)
+                    foundContacts.push_back(contact);
+                break;
+            case 4:
+                if (contact.getNrTel() == searchValue)
+                    foundContacts.push_back(contact);
+                break;
+            case 5:
+                if (contact.getAddress() == searchValue)
+                    foundContacts.push_back(contact);
+                break;
+            default:
+                cout << "Invalid option." << endl;
+                return;
+        }
+    }
+
+    if (foundContacts.empty()) {
+        cout << "No contacts found." << endl;
+    } else {
+        cout << "Found contacts:" << endl;
+        for (auto& contact : foundContacts) {
+            cout << "ID: " << contact.getContactId() << ", Name: " << contact.getName() << " " << contact.getSurname() 
+                 << ", Email: " << contact.getEmail() << ", Phone: " << contact.getNrTel() 
+                 << ", Address: " << contact.getAddress() << endl;
+        }
+    }
+}

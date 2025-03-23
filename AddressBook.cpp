@@ -55,3 +55,7 @@ void AddressBook::editContact(){
 void AddressBook::deleteContact(){
     contactManager->deleteContact();
 }
+
+void AddressBook::searchContact(){
+    contactManager->searchContact();
+}

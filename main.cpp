@@ -33,9 +33,9 @@ int main(){
             cin >> choice;
             switch (choice)
             {
-            // case 1:
-            //     searchFriend(contacts);
-            //     break;
+            case 1:
+                addressBook.searchContact();
+                break;
             case 2:
                 addressBook.showContacts();
                 break;

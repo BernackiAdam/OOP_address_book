@@ -23,6 +23,7 @@ public:
     void showContacts();
     void editContact();
     void deleteContact();
+    void searchContact();
 };
 
 #endif

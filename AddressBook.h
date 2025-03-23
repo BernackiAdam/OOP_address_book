@@ -28,6 +28,7 @@ public:
     void setCurrentUser(User user);
     void editContact();
     void deleteContact();
+    void searchContact();
 };
 
 #endif
